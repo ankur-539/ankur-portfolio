@@ -1,199 +1,198 @@
 import { useEffect, useState } from "react";
 
 import {
-  FiGithub,
-  FiLinkedin,
-  FiMail,
-  FiMoon,
-  FiMenu,
-  FiX,
+    FiGithub,
+    FiLinkedin,
+    FiMail,
+    FiMoon,
+    FiMenu,
+    FiX,
 } from "react-icons/fi";
 
 const navItems = [
-  { name: "Home", id: "home" },
-  { name: "About", id: "about" },
-  { name: "Skills", id: "skills" },
-  { name: "Projects", id: "projects" },
-  { name: "Experience", id: "experience" },
-  { name: "Education", id: "education" },
-  { name: "Contact", id: "contact" },
+    { name: "Home", id: "home" },
+    { name: "About", id: "about" },
+    { name: "Skills", id: "skills" },
+    { name: "Projects", id: "projects" },
+    { name: "Experience", id: "experience" },
+    { name: "Education", id: "education" },
+    { name: "Contact", id: "contact" },
 ];
 
 function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState("home");
 
-  // Detect current section
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 150;
+    // Detect current section
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY + 150;
 
-      for (const item of navItems) {
-        const section = document.getElementById(item.id);
+            for (const item of navItems) {
+                const section = document.getElementById(item.id);
 
-        if (!section) continue;
+                if (!section) continue;
 
-        const sectionTop = section.offsetTop;
-        const sectionBottom = sectionTop + section.offsetHeight;
+                const sectionTop = section.offsetTop;
+                const sectionBottom = sectionTop + section.offsetHeight;
 
-        if (
-          scrollPosition >= sectionTop &&
-          scrollPosition < sectionBottom
-        ) {
-          setActiveSection(item.id);
-          break;
-        }
-      }
+                if (
+                    scrollPosition >= sectionTop &&
+                    scrollPosition < sectionBottom
+                ) {
+                    setActiveSection(item.id);
+                    break;
+                }
+            }
+        };
+
+        handleScroll();
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    const closeMenu = () => {
+        setMenuOpen(false);
     };
 
-    handleScroll();
+    return (
+        <nav className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-slate-950/80 backdrop-blur-md">
 
-    window.addEventListener("scroll", handleScroll);
+            <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+                {/* Logo */}
+                <a
+                    href="#home"
+                    onClick={closeMenu}
+                    className="flex items-center gap-3"
+                >
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-purple-500 bg-purple-500/10 font-bold text-purple-400">
+                        AK
+                    </div>
 
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
+                    <span className="text-lg font-semibold text-white">
+                        Ankur Kumar
+                    </span>
+                </a>
 
-  return (
-    <nav className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-slate-950/80 backdrop-blur-md">
+                {/* Desktop Navigation */}
+                <div className="hidden items-center gap-6 md:flex">
 
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+                    {navItems.map((item) => (
+                        <a
+                            key={item.id}
+                            href={`#${item.id}`}
+                            className={`nav-link ${activeSection === item.id ? "active" : ""
+                                }`}
+                        >
+                            {item.name}
+                        </a>
+                    ))}
 
-        {/* Logo */}
-        <a
-          href="#home"
-          onClick={closeMenu}
-          className="flex items-center gap-3"
-        >
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-purple-500 bg-purple-500/10 font-bold text-purple-400">
-            AK
-          </div>
+                </div>
 
-          <span className="text-lg font-semibold text-white">
-            Ankur Kumar
-          </span>
-        </a>
+                {/* Desktop Right */}
+                <div className="hidden items-center gap-3 md:flex">
 
-        {/* Desktop Navigation */}
-        <div className="hidden items-center gap-6 md:flex">
+                    <button
+                        type="button"
+                        className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-gray-300 transition hover:bg-purple-500/20 hover:text-purple-400"
+                    >
+                        <FiMoon size={18} />
+                    </button>
 
-          {navItems.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className={`nav-link ${
-                activeSection === item.id ? "active" : ""
-              }`}
-            >
-              {item.name}
-            </a>
-          ))}
+                    <a
+                        href="/resume/Ankur-Kumar-Resume.pdf"
+                        download="Ankur-Kumar-Resume.pdf"
+                        className="rounded-lg bg-purple-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-purple-500"
+                    >
+                        Resume
+                    </a>
 
-        </div>
+                </div>
 
-        {/* Desktop Right */}
-        <div className="hidden items-center gap-3 md:flex">
+                {/* Mobile Menu Button */}
+                <button
+                    type="button"
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white md:hidden"
+                    aria-label="Toggle menu"
+                >
+                    {menuOpen ? <FiX size={23} /> : <FiMenu size={23} />}
+                </button>
 
-          <button
-            type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-gray-300 transition hover:bg-purple-500/20 hover:text-purple-400"
-          >
-            <FiMoon size={18} />
-          </button>
+            </div>
 
-          <a
-            href="/resume/Ankur-Kumar-Resume.pdf"
-            download="Ankur-Kumar-Resume.pdf"
-            className="rounded-lg bg-purple-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-purple-500"
-          >
-            Resume
-          </a>
+            {/* Mobile Menu */}
+            {menuOpen && (
+                <div className="border-t border-white/10 bg-slate-950 px-6 py-6 md:hidden">
 
-        </div>
+                    <div className="flex flex-col gap-2">
 
-        {/* Mobile Menu Button */}
-        <button
-          type="button"
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white md:hidden"
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <FiX size={23} /> : <FiMenu size={23} />}
-        </button>
+                        {navItems.map((item) => (
+                            <a
+                                key={item.id}
+                                href={`#${item.id}`}
+                                onClick={closeMenu}
+                                className={`rounded-lg px-4 py-3 transition ${activeSection === item.id
+                                        ? "bg-purple-500/10 text-purple-400"
+                                        : "text-gray-300 hover:bg-purple-500/10 hover:text-purple-400"
+                                    }`}
+                            >
+                                {item.name}
+                            </a>
+                        ))}
 
-      </div>
+                    </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="border-t border-white/10 bg-slate-950 px-6 py-6 md:hidden">
+                    {/* Mobile Social Links */}
+                    <div className="mt-5 flex gap-3 border-t border-white/10 pt-5">
 
-          <div className="flex flex-col gap-2">
+                        <a
+                            href="https://github.com/ankur-539"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-gray-300 hover:text-purple-400"
+                        >
+                            <FiGithub />
+                        </a>
 
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={closeMenu}
-                className={`rounded-lg px-4 py-3 transition ${
-                  activeSection === item.id
-                    ? "bg-purple-500/10 text-purple-400"
-                    : "text-gray-300 hover:bg-purple-500/10 hover:text-purple-400"
-                }`}
-              >
-                {item.name}
-              </a>
-            ))}
+                        <a
+                            href="https://www.linkedin.com/in/ankur539"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-gray-300 hover:text-purple-400"
+                        >
+                            <FiLinkedin />
+                        </a>
 
-          </div>
+                        <a
+                            href="mailto:ankurweb539@gmail.com"
+                            className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-gray-300 hover:text-purple-400"
+                        >
+                            <FiMail />
+                        </a>
 
-          {/* Mobile Social Links */}
-          <div className="mt-5 flex gap-3 border-t border-white/10 pt-5">
+                        <a
+                            href="/resume/Ankur-Kumar-Resume.pdf"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="rounded-lg bg-purple-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-purple-500"
+                        >
+                            Resume
+                        </a>
 
-            <a
-              href="https://github.com/ankur-539"
-              target="_blank"
-              rel="noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-gray-300 hover:text-purple-400"
-            >
-              <FiGithub />
-            </a>
+                    </div>
 
-            <a
-              href="https://www.linkedin.com/in/ankur539"
-              target="_blank"
-              rel="noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-gray-300 hover:text-purple-400"
-            >
-              <FiLinkedin />
-            </a>
+                </div>
+            )}
 
-            <a
-              href="mailto:ankurweb539@gmail.com"
-              className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-gray-300 hover:text-purple-400"
-            >
-              <FiMail />
-            </a>
-
-            <a
-              href="/resume/Ankur-Kumar-Resume.pdf"
-              download="Ankur-Kumar-Resume.pdf"
-              className="ml-auto rounded-lg bg-purple-600 px-5 py-2 text-sm font-medium text-white"
-            >
-              Resume
-            </a>
-
-          </div>
-
-        </div>
-      )}
-
-    </nav>
-  );
+        </nav>
+    );
 }
 
 export default Navbar;
