@@ -4,7 +4,6 @@ import {
     FiGithub,
     FiLinkedin,
     FiMail,
-    FiMoon,
     FiMenu,
     FiX,
 } from "react-icons/fi";
@@ -34,7 +33,8 @@ function Navbar() {
                 if (!section) continue;
 
                 const sectionTop = section.offsetTop;
-                const sectionBottom = sectionTop + section.offsetHeight;
+                const sectionBottom =
+                    sectionTop + section.offsetHeight;
 
                 if (
                     scrollPosition >= sectionTop &&
@@ -55,6 +55,7 @@ function Navbar() {
         };
     }, []);
 
+    // Close mobile menu
     const closeMenu = () => {
         setMenuOpen(false);
     };
@@ -79,6 +80,7 @@ function Navbar() {
                     </span>
                 </a>
 
+
                 {/* Desktop Navigation */}
                 <div className="hidden items-center gap-6 md:flex">
 
@@ -86,8 +88,11 @@ function Navbar() {
                         <a
                             key={item.id}
                             href={`#${item.id}`}
-                            className={`nav-link ${activeSection === item.id ? "active" : ""
-                                }`}
+                            className={`nav-link ${
+                                activeSection === item.id
+                                    ? "active"
+                                    : ""
+                            }`}
                         >
                             {item.name}
                         </a>
@@ -95,16 +100,11 @@ function Navbar() {
 
                 </div>
 
+
                 {/* Desktop Right */}
                 <div className="hidden items-center gap-3 md:flex">
 
-                    <button
-                        type="button"
-                        className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-gray-300 transition hover:bg-purple-500/20 hover:text-purple-400"
-                    >
-                        <FiMoon size={18} />
-                    </button>
-
+                    {/* Resume */}
                     <a
                         href="/resume/Ankur-Kumar-Resume.pdf"
                         download="Ankur-Kumar-Resume.pdf"
@@ -115,6 +115,7 @@ function Navbar() {
 
                 </div>
 
+
                 {/* Mobile Menu Button */}
                 <button
                     type="button"
@@ -122,15 +123,21 @@ function Navbar() {
                     className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white md:hidden"
                     aria-label="Toggle menu"
                 >
-                    {menuOpen ? <FiX size={23} /> : <FiMenu size={23} />}
+                    {menuOpen ? (
+                        <FiX size={23} />
+                    ) : (
+                        <FiMenu size={23} />
+                    )}
                 </button>
 
             </div>
+
 
             {/* Mobile Menu */}
             {menuOpen && (
                 <div className="border-t border-white/10 bg-slate-950 px-6 py-6 md:hidden">
 
+                    {/* Navigation */}
                     <div className="flex flex-col gap-2">
 
                         {navItems.map((item) => (
@@ -138,10 +145,11 @@ function Navbar() {
                                 key={item.id}
                                 href={`#${item.id}`}
                                 onClick={closeMenu}
-                                className={`rounded-lg px-4 py-3 transition ${activeSection === item.id
+                                className={`rounded-lg px-4 py-3 transition ${
+                                    activeSection === item.id
                                         ? "bg-purple-500/10 text-purple-400"
                                         : "text-gray-300 hover:bg-purple-500/10 hover:text-purple-400"
-                                    }`}
+                                }`}
                             >
                                 {item.name}
                             </a>
@@ -149,39 +157,49 @@ function Navbar() {
 
                     </div>
 
+
                     {/* Mobile Social Links */}
                     <div className="mt-5 flex gap-3 border-t border-white/10 pt-5">
 
+                        {/* GitHub */}
                         <a
                             href="https://github.com/ankur-539"
                             target="_blank"
                             rel="noreferrer"
+                            aria-label="GitHub"
                             className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-gray-300 hover:text-purple-400"
                         >
                             <FiGithub />
                         </a>
 
+
+                        {/* LinkedIn */}
                         <a
                             href="https://www.linkedin.com/in/ankur539"
                             target="_blank"
                             rel="noreferrer"
+                            aria-label="LinkedIn"
                             className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-gray-300 hover:text-purple-400"
                         >
                             <FiLinkedin />
                         </a>
 
+
+                        {/* Email */}
                         <a
                             href="mailto:ankurweb539@gmail.com"
+                            aria-label="Email"
                             className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-gray-300 hover:text-purple-400"
                         >
                             <FiMail />
                         </a>
 
+
+                        {/* Resume */}
                         <a
                             href="/resume/Ankur-Kumar-Resume.pdf"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="rounded-lg bg-purple-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-purple-500"
+                            download="Ankur-Kumar-Resume.pdf"
+                            className="ml-auto rounded-lg bg-purple-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-purple-500"
                         >
                             Resume
                         </a>
