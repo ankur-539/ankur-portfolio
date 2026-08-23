@@ -44,12 +44,12 @@ function Experience() {
 
                     {/* Experience Card */}
                     <motion.div
-                        initial={{ opacity: 0, x: -40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.7 }}
-                        className="relative md:pl-16"
-                    >
+  initial={{ opacity: 0, x: -40 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true, amount: 0.2 }}
+  transition={{ duration: 0.7 }}
+  className="relative md:pl-16"
+>
                         {/* Timeline Dot */}
                         <div className="absolute left-0 top-8 hidden h-10 w-10 items-center justify-center rounded-full border border-purple-500/40 bg-purple-500/10 text-purple-400 md:flex">
                             <span className="h-3 w-3 rounded-full bg-purple-500 shadow-lg shadow-purple-500/50" />

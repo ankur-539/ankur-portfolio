@@ -49,31 +49,42 @@ function About() {
                             <div className="h-full overflow-y-auto pr-4 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-purple-500/50">
 
                                 <p className="text-lg leading-8 text-gray-300">
-                                    I'm <span className="font-semibold text-white">Ankur Kumar</span>,
-                                    a passionate{" "}
-                                    <span className="text-purple-400">
+                                    I'm{" "}
+                                    <span className="font-semibold text-white">
+                                        Ankur Kumar
+                                    </span>
+                                    , a BCA graduate and{" "}
+                                    <span className="font-semibold text-purple-400">
                                         MERN Stack Developer
-                                    </span>{" "}
-                                    and BCA graduate who enjoys building modern and responsive
+                                    </span>
+                                    {" "}passionate about building modern, responsive and user-friendly
                                     web applications.
                                 </p>
 
                                 <p className="mt-6 text-lg leading-8 text-gray-400">
-                                    I have hands-on experience with React.js, JavaScript, Node.js,
-                                    Express.js and MongoDB. I focus on creating clean user
-                                    interfaces and developing reliable backend functionality.
+                                    I have hands-on experience with{" "}
+                                    <span className="text-gray-200">
+                                        React.js, JavaScript, Node.js, Express.js and MongoDB
+                                    </span>
+                                    , along with REST APIs, JWT authentication and Git/GitHub.
                                 </p>
 
                                 <p className="mt-6 text-lg leading-8 text-gray-400">
-                                    I completed a 6-month MERN Stack training program at
-                                    CodeSquadz, where I worked on practical React and full-stack
-                                    projects.
+                                    During my MERN Stack training at{" "}
+                                    <span className="text-purple-400">
+                                        CodeSquadz IT Training Company
+                                    </span>
+                                    , I worked on practical projects and developed a strong
+                                    understanding of full-stack web development.
                                 </p>
 
                                 <p className="mt-6 text-lg leading-8 text-gray-400">
-                                    Currently, I'm looking for an opportunity where I can apply
-                                    my skills, learn from experienced developers and grow as a
-                                    professional software developer.
+                                    I'm currently looking for an{" "}
+                                    <span className="text-white font-medium">
+                                        entry-level Web Developer / MERN Stack Developer opportunity
+                                    </span>
+                                    {" "}where I can contribute my skills, work on real-world projects
+                                    and continue growing as a developer.
                                 </p>
 
                             </div>
@@ -132,15 +143,15 @@ function About() {
                         {/* Card 4 */}
                         <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:-translate-y-1 hover:border-purple-500/40">
                             <p className="text-sm text-gray-500">
-                                Current Goal
+                                Looking For
                             </p>
 
                             <h3 className="mt-2 text-xl font-semibold text-white">
-                                Web Developer
+                                Web Developer Role
                             </h3>
 
                             <p className="mt-2 text-sm leading-6 text-gray-400">
-                                Looking for an entry-level opportunity
+                                Open to entry-level opportunities
                             </p>
                         </div>
 
