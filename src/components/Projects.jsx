@@ -18,6 +18,17 @@ const projects = [
     },
 
     {
+        title: "E-Commerce Platform",
+        description:
+            "Full-stack MERN e-commerce platform with user management, admin management, invoice management and dashboard functionality.",
+        tech: ["React", "Node.js", "Express", "MongoDB", "JWT"],
+        image: "/projects/ecommerce.png",
+        github: "https://github.com/ankur-539/mern-ecommerce-frontend",
+        live: "https://mern-ecommerce-frontend-ukaq.onrender.com/",
+        type: "Full Stack",
+    },
+
+    {
         title: "Weather App",
         description:
             "Responsive weather application that displays current weather conditions and forecast information using a weather API.",
@@ -25,7 +36,7 @@ const projects = [
         image: "/projects/weather.png",
         github: "https://github.com/ankur-539/appweather",
         live: "https://weatherapp-by-ankur.onrender.com/",
-        type: "React",
+        type: "React App",
     },
 
     {
@@ -49,6 +60,7 @@ const projects = [
         live: "https://ankur-539.netlify.app/",
         type: "Frontend",
     },
+
 ];
 
 function Projects() {
@@ -86,7 +98,7 @@ function Projects() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.15 }}
                     transition={{ duration: 0.7 }}
-                    className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+                    className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5"
                 >
                     {projects.map((project) => (
                         <article
@@ -95,7 +107,7 @@ function Projects() {
                         >
 
                             {/* Image */}
-                            <div className="relative h-44 overflow-hidden bg-slate-900 ">
+                            <div className="relative h-44 overflow-hidden bg-slate-900">
 
                                 <img
                                     src={project.image}
@@ -168,7 +180,6 @@ function Projects() {
                             </div>
                         </article>
                     ))}
-
                 </motion.div>
 
             </div>
